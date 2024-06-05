@@ -11,7 +11,7 @@ public class Cliente {
 
 	private static final DateTimeFormatter formatar = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-	/*public Cliente(String nome, String cpf, String dataNascimento) {
+	public Cliente(String nome, String cpf, String dataNascimento) {
 		this.nome = nome;
 		this.cpf = cpf;
 		try{ 
@@ -19,14 +19,24 @@ public class Cliente {
 		}catch(DateTimeException e){
 			throw new IllegalArgumentException();
 		}
-	}*/
+	}
 
 	public String getNome() {
 		return nome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public String getCpf() {
+		return cpf;
 	}
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public static DateTimeFormatter getFormatar() {
+		return formatar;
+	}
+
+	
 
 }
