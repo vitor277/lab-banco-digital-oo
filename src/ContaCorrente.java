@@ -1,3 +1,4 @@
+import Exceptions.SaldoInsuficiente;
 
 public class ContaCorrente extends Conta {
 
