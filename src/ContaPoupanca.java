@@ -5,9 +5,18 @@ public class ContaPoupanca extends Conta {
 		super(cliente);
 	}
 
+	public boolean sacar(double valor) throws SaldoInsuficiente {
+		if(saldo >= (valor)){
+			saldo -= valor;
+			return true;
+		}else{
+			throw new SaldoInsuficiente();
+		}
+	}
+
 	@Override
 	public void imprimirExtrato() {
-		System.out.println("=== Extrato Conta Poupança ===");
+		System.out.println("=== Extrato Conta PoupanÃ§a ===");
 		super.imprimirInfosComuns();
 	}
 }

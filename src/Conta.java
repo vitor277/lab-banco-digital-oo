@@ -8,6 +8,7 @@ public abstract class Conta implements IConta {
 	protected int numero;
 	protected double saldo;
 	protected Cliente cliente;
+	
 
 	public Conta(Cliente cliente) {
 		this.agencia = Conta.AGENCIA_PADRAO;
@@ -15,10 +16,8 @@ public abstract class Conta implements IConta {
 		this.cliente = cliente;
 	}
 
-	@Override
-	public void sacar(double valor) {
-		saldo -= valor;
-	}
+	
+	public abstract boolean sacar(double valor) throws SaldoInsuficiente;
 
 	@Override
 	public void depositar(double valor) {
@@ -26,9 +25,13 @@ public abstract class Conta implements IConta {
 	}
 
 	@Override
-	public void transferir(double valor, IConta contaDestino) {
-		this.sacar(valor);
-		contaDestino.depositar(valor);
+	public void transferir(double valor, IConta contaDestino) throws SaldoInsuficiente {
+		if(sacar(valor)){
+			contaDestino.depositar(valor);
+		}else{
+			throw new SaldoInsuficiente();
+		};
+		
 	}
 
 	public int getAgencia() {
